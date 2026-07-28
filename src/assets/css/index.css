@@ -1,0 +1,116 @@
+@import "./abstracts/reset.css";
+@import "./abstracts/properties.css";
+@import "./abstracts/utility-classes.css";
+@import "./abstracts/fonts.css";
+
+:root {
+  --font-size-xs: 1.2rem;
+  --font-size-xs-sm: 1.4rem;
+  --font-size-sm: 1.7rem;
+  --font-size-md: 2rem;
+  --font-size-lg: 2.5rem;
+  --font-size-xl: 3rem;
+  --font-size-2xl: 3.5rem;
+  --font-size-3xl: 4rem;
+  --main-button-size: 5rem;
+  --letter-spacing-lg: 0.15rem;
+  --letter-spacing-md: 0.075rem;
+  @media (max-width: 768px) {
+    --font-size-xs: 1.5rem;
+    --font-size-xs-sm: 1.75rem;
+    --font-size-sm: 2rem;
+    --font-size-md: 2.5rem;
+    --font-size-lg: 3rem;
+    --font-size-xl: 3.5rem;
+    --font-size-2xl: 4rem;
+    --font-size-3xl: 4.5rem;
+    --main-button-size: 6rem;
+    --letter-spacing-lg: 0.1rem;
+    --letter-spacing-md: 0.05rem;
+  }
+  --default-font: "Inter", monospace;
+  --alternative-font: "UbuntuMono", monospace;
+  --color-grey: color-mix(in srgb, var(--color-dark) 40%, var(--color-light));
+  --breakpoint-mobile: 768px;
+}
+
+html {
+  font-family: var(--default-font);
+  font-size: 62.5%;
+  letter-spacing: var(--letter-spacing-md);
+  color: var(--color-light);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+canvas {
+  display: block;
+}
+
+body,
+#root,
+main {
+  font-size: 1.6rem;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 0;
+
+  ::selection {
+    background-color: color-mix(
+      in srgb,
+      var(--color-grey) 60%,
+      var(--color-darkest)
+    );
+    color: var(--color-light);
+  }
+}
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+  display: block;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-darker);
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-grey);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-darker);
+}
+
+/* STEP 3: The Button Killer */
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: var(--color-grey);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--color-light);
+}
+
+::-webkit-scrollbar-track:horizontal {
+  background: var(--color-darker);
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-light);
+  outline-offset: 2px;
+}

@@ -1,0 +1,69 @@
+@property --color-royal-gold {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #FBDA6F;
+}
+
+@property --color-rich-cerulean {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #506D95;
+}
+
+@property --color-prussian-blue {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0A122A;
+}
+
+@property --color-pale-slate {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #C7D3DD;
+}
+/* platinum */
+@property --color-bright-snow {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #FCFCFC;
+}
+
+@property --color-platinum {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #F1F1F1;
+}
+
+@property --color-vibrant-coral {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #FE5F55;
+}
+
+@property --line-height-sm {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1.2;
+}
+
+/* just for reference: */
+/* @property --breakpoint-mobile {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 767px;
+}
+@property --breakpoint-tablet {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 768px;
+}
+@property --breakpoint-desktop {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1024px;
+}
+@property --breakpoint-big-screen {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1440px;
+} */

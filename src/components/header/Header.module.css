@@ -1,0 +1,28 @@
+.header {
+  height: 6.5rem;
+  background: var(--color-bright-snow);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  padding: 0 clamp(2rem, 40rem, 20vw);
+  gap: 1rem;
+  .titleLogo {
+    /* background-color: var(--color-bright-snow); */
+    height: 70%;
+    border-radius: 10px;
+    /* align-self: flex-start; */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    .logo {
+      height: 80%;
+      width: auto;
+      padding-bottom: 2px;
+    }
+    .title {
+      color: var(--color-royal-gold);
+      font-size: var(--font-size-3xl);
+      font-weight: 900;
+      letter-spacing: var(--letter-spacing-lg);
+    }
+  }
+}
