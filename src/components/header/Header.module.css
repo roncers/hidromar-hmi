@@ -1,9 +1,57 @@
+@property --_line-1-pos {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 46%;
+}
+
+@property --_line-2-pos {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 48%;
+}
+
+@keyframes move-lines {
+  from {
+    --_line-1-pos: 46%;
+    --_line-2-pos: 48%;
+  }
+  to {
+    --_line-1-pos: 48%;
+    --_line-2-pos: 46%;
+  }
+}
+
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
   height: 6.5rem;
-  background: var(--color-bright-snow);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  --_lines-width: 5px;
+  background:
+    linear-gradient(
+      30deg,
+      transparent calc(var(--_line-1-pos) - var(--_lines-width)),
+      var(--color-rich-cerulean) calc(var(--_line-1-pos) - var(--_lines-width)),
+      var(--color-rich-cerulean) calc(var(--_line-1-pos) + var(--_lines-width)),
+      transparent calc(var(--_line-1-pos) + var(--_lines-width))
+    ),
+    linear-gradient(
+      30deg,
+      transparent calc(var(--_line-2-pos) - var(--_lines-width)),
+      var(--color-royal-gold) calc(var(--_line-2-pos) - var(--_lines-width)),
+      var(--color-royal-gold) calc(var(--_line-2-pos) + var(--_lines-width)),
+      transparent calc(var(--_line-2-pos) + var(--_lines-width))
+    ),
+    var(--color-bright-snow);
+  background-repeat: no-repeat;
+  box-shadow: 0 2px 6px rgba(10, 18, 42, 0.2);
   padding: 0 clamp(2rem, 40rem, 20vw);
   gap: 1rem;
+  transition: transform 1s ease-in-out;
+  @starting-style {
+    transform: translateY(-200%);
+  }
   .titleLogo {
     /* background-color: var(--color-bright-snow); */
     height: 70%;
@@ -24,5 +72,105 @@
       font-weight: 900;
       letter-spacing: var(--letter-spacing-lg);
     }
+  }
+  .menuToggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 3rem;
+    height: 3rem;
+    background: transparent;
+    border: none;
+    span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: var(--color-rich-cerulean);
+      border-radius: 2px;
+      transition:
+        transform 0.3s ease-in-out,
+        opacity 0.3s ease-in-out,
+        background-color 0.2s ease-in-out;
+    }
+  }
+  .menuToggleOpen {
+    span:nth-child(1) {
+      transform: translateY(calc(0.4rem + 2px)) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(calc(-0.4rem - 2px)) rotate(-45deg);
+    }
+  }
+  .navList {
+    gap: 2rem;
+  }
+  .headerButton {
+    background-color: transparent;
+    border: none;
+    color: var(--color-rich-cerulean);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing-md);
+    transition:
+      color 0.2s ease-in-out,
+      background-color 0.5s ease-in-out;
+    border-radius: 5px;
+    &:hover,
+    &.active {
+      color: var(--color-royal-gold);
+      background-color: var(--color-rich-cerulean);
+    }
+  }
+  /* tablet and below */
+  @media (max-width: 1024px) {
+    box-shadow: none;
+    padding: 0 1rem;
+    background: var(--color-bright-snow);
+    .menuToggle {
+      display: flex;
+    }
+    .navList {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      flex-direction: column;
+      width: 100%;
+      background-color: var(--color-bright-snow);
+      box-shadow: 0 2px 6px rgba(10, 18, 42, 0.2);
+      padding: 1rem;
+      display: none;
+      transform-origin: top;
+      transform: scaleY(0);
+      gap: 0;
+      transition:
+        transform 0.25s ease-in-out,
+        display 0.25s allow-discrete;
+      &.open {
+        display: flex;
+        transform: scaleY(1);
+        @starting-style {
+          transform: scaleY(0);
+        }
+      }
+      li:not(:last-child) {
+        border-bottom: 2px solid var(--color-pale-slate);
+      }
+    }
+    .headerButton {
+      width: 100%;
+      height: 5rem;
+    }
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .header {
+    animation: move-lines 10s linear both alternate;
+    animation-iteration-count: 4;
+    animation-timeline: scroll(root);
   }
 }

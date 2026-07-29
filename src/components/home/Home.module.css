@@ -1,0 +1,15 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainImage {
+  width: min(100%, 140rem);
+  height: auto;
+  object-fit: cover;
+  transition: transform 2s ease-out;
+  @starting-style {
+    transform: translateY(200%);
+  }
+}
