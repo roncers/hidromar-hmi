@@ -1,30 +1,31 @@
 import { useState } from "react"
+import { Link, NavLink, useLocation } from "react-router"
 import styles from "./Header.module.css"
-// import { useNavigate } from "react-router"
 import { useTranslation } from "react-i18next"
 import useMenuClose from "@/hooks/useMenuClose"
 import hidromarLogo from "@/assets/images/logo/logo-bg.png"
+import { navRoutes } from "@/routes"
+
 export default function Header() {
-  //   const navigate = useNavigate()
   const { t } = useTranslation()
-  const [activePath, setActivePath] = useState("/")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const navRef = useMenuClose<HTMLElement>(isMenuOpen, () => setIsMenuOpen(false))
+  const { pathname } = useLocation()
 
-  function navigate(a: string) {
-    console.log(a)
-    if (a !== activePath) {
-      setIsMenuOpen(false)
-      setActivePath(a)
-    }
+  const closeMenuIfNavigating = (path: string) => {
+    if (path !== pathname) setIsMenuOpen(false)
   }
 
   return (
     <header className={styles.header + " flex justify-between items-center"}>
-      <div className={styles.titleLogo + " ml-2"} onClick={() => navigate("/")}>
+      <Link
+        to="/"
+        className={styles.titleLogo + " ml-2"}
+        onClick={() => closeMenuIfNavigating("/")}
+      >
         <img src={hidromarLogo} className={styles.logo} alt="Hidromar Logo" />
         <h1 className={styles.title}>idromar</h1>
-      </div>
+      </Link>
       <nav ref={navRef}>
         {/* TODO: animate the menuToggle button */}
         <button
@@ -48,22 +49,20 @@ export default function Header() {
             (isMenuOpen ? " " + styles.open : "")
           }
         >
-          {[
-            { path: "/", label: t("nav.home") },
-            { path: "/products", label: t("nav.products") },
-            { path: "/contact", label: t("nav.contact") },
-          ].map(({ path, label }) => (
+          {navRoutes.map(({ path, labelKey }) => (
             <li key={path}>
-              <button
-                className={
+              <NavLink
+                to={path}
+                // end={path === "/"}
+                onClick={() => closeMenuIfNavigating(path)}
+                className={({ isActive }) =>
                   "cursor-pointer " +
                   styles.headerButton +
-                  (activePath === path ? " " + styles.active : "")
+                  (isActive ? " " + styles.active : "")
                 }
-                onClick={() => navigate(path)}
               >
-                {label}
-              </button>
+                {t(labelKey)}
+              </NavLink>
             </li>
           ))}
         </ul>

@@ -3,5 +3,30 @@
     "home": "Home",
     "products": "Products",
     "contact": "Contact"
+  },
+  "home": {
+    "imageAlt": "Gaskets Palette",
+    "imageText": "Juntas de estanquedad para sistemas hidráulicos y neumáticos."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "backHome": "Back to home"
+  },
+  "footer": {
+    "products": {
+      "title": "Our products",
+      "description": "Sealing gaskets for hydraulic systems."
+    },
+    "contact": {
+      "title": "Contact us",
+      "address": "Galapagar, 20 – Pol. Ind. Ventorro Del Cano – Madrid",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email"
+    },
+    "legal": {
+      "terms": "Terms of Use",
+      "privacy": "Privacy Policy",
+      "notice": "Legal Notice"
+    }
   }
 }

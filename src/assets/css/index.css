@@ -56,14 +56,11 @@ main {
   height: auto;
   margin: 0;
 
-  ::selection {
-    background-color: color-mix(
-      in srgb,
-      var(--color-grey) 60%,
-      var(--color-darkest)
-    );
-    color: var(--color-light);
-  }
+}
+
+::selection {
+  background-color: var(--color-rich-cerulean);
+  color: var(--color-bright-snow);
 }
 /* scrollbar */
 ::-webkit-scrollbar {

@@ -4,12 +4,72 @@
   align-items: center;
 }
 
-.mainImage {
-  width: min(100%, 140rem);
-  height: auto;
-  object-fit: cover;
-  transition: transform 2s ease-out;
+.imageContainer {
+  --_image-ratio: 1568 / 892;
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: calc(80vh * var(--_image-ratio));
+  margin-inline: auto;
+  box-shadow:
+    0 0.2rem 0.4rem color-mix(in srgb, var(--color-prussian-blue) 8%, transparent),
+    0 1rem 2rem color-mix(in srgb, var(--color-prussian-blue) 12%, transparent),
+    0 2.4rem 5rem color-mix(in srgb, var(--color-prussian-blue) 16%, transparent);
+  transition:
+    transform 2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s,
+    opacity 2s ease-out 0.4s;
   @starting-style {
-    transform: translateY(200%);
+    transform: translateY(4rem);
+    opacity: 0;
+  }
+}
+
+.mainImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--_image-ratio);
+}
+
+.imageText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: min(80rem, calc(100% - 4rem));
+  margin: 0;
+  padding: clamp(1.6rem, 3vw, 2.8rem) clamp(2rem, 4vw, 4rem);
+  border: 1px solid color-mix(in srgb, var(--color-bright-snow) 35%, transparent);
+  border-radius: 1.6rem;
+  background-color: color-mix(in srgb, var(--color-prussian-blue) 45%, transparent);
+  backdrop-filter: blur(12px) saturate(1.2);
+  box-shadow:
+    0 1rem 3rem color-mix(in srgb, var(--color-prussian-blue) 35%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-bright-snow) 25%, transparent);
+  color: var(--color-bright-snow);
+  font-size: clamp(1.6rem, 3vw, 3rem);
+  font-weight: 700;
+  line-height: var(--line-height-sm);
+  letter-spacing: var(--letter-spacing-lg);
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 2px 8px color-mix(in srgb, var(--color-prussian-blue) 60%, transparent);
+  transition: opacity 1s ease-out 0.5s;
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+@supports not (backdrop-filter: blur(12px)) {
+  .imageText {
+    background-color: color-mix(in srgb, var(--color-prussian-blue) 80%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imageContainer,
+  .imageText {
+    transition: none;
   }
 }

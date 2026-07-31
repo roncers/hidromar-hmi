@@ -3,5 +3,30 @@
     "home": "Inicio",
     "products": "Productos",
     "contact": "Contacto"
+  },
+  "home": {
+    "imageAlt": "Gaskets Palette",
+    "imageText": "Hidromar"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "backHome": "Volver al inicio"
+  },
+  "footer": {
+    "products": {
+      "title": "Nuestros productos",
+      "description": "Juntas de estanquedad para sistemas hidráulicos."
+    },
+    "contact": {
+      "title": "Contacte con nosotros",
+      "address": "Galapagar, 20 – Pol. Ind. Ventorro Del Cano – Madrid",
+      "phoneLabel": "Tlf.",
+      "emailLabel": "Correo"
+    },
+    "legal": {
+      "terms": "Términos de Uso",
+      "privacy": "Política de Privacidad",
+      "notice": "Aviso Legal"
+    }
   }
 }
