@@ -1,7 +1,12 @@
 .home {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: var(--default-gap);
+  margin-top: var(--default-gap);
+  margin: var(--default-gap) var(--default-gap) 0 var(--default-gap);
+
 }
 
 .imageContainer {
@@ -24,6 +29,11 @@
   }
 }
 
+.mainPicture {
+  display: flex;
+  width: 100%;
+}
+
 .mainImage {
   display: block;
   width: 100%;
@@ -31,45 +41,61 @@
   aspect-ratio: var(--_image-ratio);
 }
 
-.imageText {
+/* mobile: portrait artwork */
+@media (max-width: 768px) {
+  .imageContainer {
+    --_image-ratio: 941 / 1672;
+    max-width: 100%;
+  }
+}
+
+.imageOverlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: max-content;
-  max-width: min(80rem, calc(100% - 4rem));
-  margin: 0;
-  padding: clamp(1.6rem, 3vw, 2.8rem) clamp(2rem, 4vw, 4rem);
-  border: 1px solid color-mix(in srgb, var(--color-bright-snow) 35%, transparent);
-  border-radius: 1.6rem;
-  background-color: color-mix(in srgb, var(--color-prussian-blue) 45%, transparent);
-  backdrop-filter: blur(12px) saturate(1.2);
-  box-shadow:
-    0 1rem 3rem color-mix(in srgb, var(--color-prussian-blue) 35%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--color-bright-snow) 25%, transparent);
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: clamp(0.8rem, 2vw, 1.6rem);
+  padding: 2rem clamp(2rem, 12vw, 16rem);
+  background-color: transparent;
+  backdrop-filter: blur(3px) saturate(1.1);
   color: var(--color-bright-snow);
-  font-size: clamp(1.6rem, 3vw, 3rem);
-  font-weight: 700;
-  line-height: var(--line-height-sm);
-  letter-spacing: var(--letter-spacing-lg);
   text-align: center;
-  text-wrap: balance;
-  text-shadow: 0 2px 8px color-mix(in srgb, var(--color-prussian-blue) 60%, transparent);
+  text-shadow:
+    0 1px 2px color-mix(in srgb, var(--color-prussian-blue) 70%, transparent),
+    0 2px 12px color-mix(in srgb, var(--color-prussian-blue) 60%, transparent);
   transition: opacity 1s ease-out 0.5s;
   @starting-style {
     opacity: 0;
   }
 }
 
-@supports not (backdrop-filter: blur(12px)) {
-  .imageText {
-    background-color: color-mix(in srgb, var(--color-prussian-blue) 80%, transparent);
+.imageTitle {
+  margin: 0;
+  color: var(--color-royal-gold);
+  font-size: calc(var(--font-size-3xl));
+  font-weight: 900;
+  line-height: var(--line-height-sm);
+  letter-spacing: calc(var(--letter-spacing-lg) * 2);
+}
+
+.imageText {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  line-height: var(--line-height-sm);
+  letter-spacing: var(--letter-spacing-lg);
+  text-wrap: balance;
+}
+
+@supports not (backdrop-filter: blur(2px)) {
+  .imageOverlay {
+    background-color: color-mix(in srgb, var(--color-prussian-blue) 35%, transparent);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .imageContainer,
-  .imageText {
+  .imageOverlay {
     transition: none;
   }
 }

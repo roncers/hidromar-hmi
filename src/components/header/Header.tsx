@@ -53,7 +53,7 @@ export default function Header() {
             <li key={path}>
               <NavLink
                 to={path}
-                // end={path === "/"}
+                end={path === "/"}
                 onClick={() => closeMenuIfNavigating(path)}
                 className={({ isActive }) =>
                   "cursor-pointer " +
